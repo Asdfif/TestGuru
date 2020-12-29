@@ -5,5 +5,8 @@ class CreateCategories < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+
+  change_column_null(:categories, :title, false) 
+
   end
 end
