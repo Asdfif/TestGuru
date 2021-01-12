@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_162733) do
   create_table "answers", force: :cascade do |t|
     t.string "description", null: false
     t.boolean "correct", default: false
-    t.integer "question_id"
+    t.integer "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_162733) do
 
   create_table "questions", force: :cascade do |t|
     t.string "description", null: false
-    t.integer "answer_id"
+    t.integer "answer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["answer_id"], name: "index_questions_on_answer_id"
@@ -38,21 +38,23 @@ ActiveRecord::Schema.define(version: 2020_12_28_162733) do
   create_table "tests", force: :cascade do |t|
     t.string "title", null: false
     t.string "category", null: false
-    t.integer "level", default: 0
-    t.integer "user_id"
-    t.integer "question_id"
+    t.integer "level", default: 0, null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["question_id"], name: "index_tests_on_question_id"
     t.index ["user_id"], name: "index_tests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "test_id"
+    t.integer "test_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["test_id"], name: "index_users_on_test_id"
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "questions", "answers"
+  add_foreign_key "tests", "users"
+  add_foreign_key "users", "tests"
 end
