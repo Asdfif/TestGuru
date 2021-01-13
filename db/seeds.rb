@@ -5,6 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-c = Category.create(title: 'C')
-u = User.create(name: 'U')
-t = Test.create(title: 't', user_id: u.id, category_id: c.id )
