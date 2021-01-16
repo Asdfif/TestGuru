@@ -7,51 +7,51 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 unless Test.exists?
-  Category.create!([
+  c = Category.create!([
     {title: 'c1'},
     {title: 'c2'}
   ])
 
-  User.create!([
+  u = User.create!([
     {name: 'U1'},
     {name: 'U2'}
   ])
 
-  Test.create!([
-    {title: 't1', category_id: Category.all[0].id, author_id: User.all[0].id},
-    {title: 't2', category_id: Category.all[1].id, author_id: User.all[1].id}
+  t = Test.create!([
+    {title: 't1', category_id: c[0].id, author_id: u[0].id},
+    {title: 't2', category_id: c[1].id, author_id: u[1].id}
   ]) 
 
-  Question.create!([
-    {title: 'q1', test_id: Test.all[0].id},
-    {title: 'q2', test_id: Test.all[0].id},
-    {title: 'q3', test_id: Test.all[0].id},
-    {title: 'q4', test_id: Test.all[1].id},
-    {title: 'q5', test_id: Test.all[1].id},
-    {title: 'q6', test_id: Test.all[1].id},
+  q = Question.create!([
+    {title: 'q1', test_id: t[0].id},
+    {title: 'q2', test_id: t[0].id},
+    {title: 'q3', test_id: t[0].id},
+    {title: 'q4', test_id: t[1].id},
+    {title: 'q5', test_id: t[1].id},
+    {title: 'q6', test_id: t[1].id},
 
   ])
 
-  Answer.create!([
-    {title: 'a1', question_id: Question.all[0].id correct: true},
-    {title: 'a2', question_id: Question.all[0].id},
-    {title: 'a3', question_id: Question.all[1].id},
-    {title: 'a4', question_id: Question.all[1].id, correct: true},
-    {title: 'a5', question_id: Question.all[2].id},
-    {title: 'a6', question_id: Question.all[2].id},
-    {title: 'a7', question_id: Question.all[2].id, correct: true},
-    {title: 'a8', question_id: Question.all[3].id, correct: true},
-    {title: 'a9', question_id: Question.all[3].id},
-    {title: 'a10', question_id: Question.all[3].id},
-    {title: 'a11', question_id: Question.all[4].id},
-    {title: 'a12', question_id: Question.all[4].id, correct: true},
-    {title: 'a13', question_id: Question.all[5].id},
-    {title: 'a14', question_id: Question.all[5].id, correct: true},
+  a = Answer.create!([
+    {title: 'a1', question_id: q[0].id correct: true},
+    {title: 'a2', question_id: q[0].id},
+    {title: 'a3', question_id: q[1].id},
+    {title: 'a4', question_id: q[1].id, correct: true},
+    {title: 'a5', question_id: q[2].id},
+    {title: 'a6', question_id: q[2].id},
+    {title: 'a7', question_id: q[2].id, correct: true},
+    {title: 'a8', question_id: q[3].id, correct: true},
+    {title: 'a9', question_id: q[3].id},
+    {title: 'a10', question_id: q[3].id},
+    {title: 'a11', question_id: q[4].id},
+    {title: 'a12', question_id: q[4].id, correct: true},
+    {title: 'a13', question_id: q[5].id},
+    {title: 'a14', question_id: q[5].id, correct: true},
 
   ])
 
   UserTest.create!([
-    {user_id: User.all[0].id, test_id: Test.all[0].id},
-    {user_id: User.all[0].id, test_id: Test.all[0].id}
+    {user_id: u[0].id, test_id: t[0].id},
+    {user_id: u[0].id, test_id: t[1].id}
   ])
 end
