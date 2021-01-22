@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-unless Test.exists? &&Category.exist? && User.exist? && Answer.exist? && Question.exist?
+unless Test.exists?
   categories = Category.create!([
     {title: 'c1'},
     {title: 'c2'}
@@ -18,8 +18,8 @@ unless Test.exists? &&Category.exist? && User.exist? && Answer.exist? && Questio
   ])
 
   tests = Test.create!([
-    {title: 't1', category_id: categories[0].id, author_id: users[1].id},
-    {title: 't2', category_id: categories[1].id, author_id: users[1].id}
+    {title: 't1', category: category[0], author_id: users[1].id},
+    {title: 't2', category: category[1], author_id: users[1].id}
   ]) 
 
   questions = Question.create!([
