@@ -24,7 +24,7 @@ unless Test.exists? #&& Category.exists? && User.exists?  && Question.exists? &&
   tests = Test.create!([
     { title: "Test1",           category: categories[0], author: users[0] },
     { title: "Test2", level: 1, category: categories[1], author: users[1] },
-    { title: "Test3", level: 1, category: categories[0], author: users[1] }
+    { title: "Test3", level: 5, category: categories[0], author: users[1] }
   ])
 # end
 
@@ -44,8 +44,8 @@ unless Test.exists? #&& Category.exists? && User.exists?  && Question.exists? &&
     { title: "Answer1", question: questions[0], correct: true },
     { title: "Answer2", question: questions[0] },
     { title: "Answer3", question: questions[1], correct: true },
-    { title: "Answer4", question: questions[1] },
-    { title: "Answer5", question: questions[2] },
+    { title: "Answer4", question: questions[2] },
+    { title: "Answer5", question: questions[3] },
     { title: "Answer6", question: questions[3], correct: true },
     { title: "Answer7", question: questions[4] },
     { title: "Answer8", question: questions[5] }

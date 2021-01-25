@@ -15,7 +15,10 @@ class Test < ApplicationRecord
     only_integer: true
   }
 
-  scope :by_difficult, -> (difficulty) { where( level: levels_by_difficult( difficulty ) ) } 
+  scope :by_level, -> (level) { where(level: level) }
+  scope :easy, -> { where(level: (0..1)) }
+  scope :medium, -> { where(level: (2..4)) }
+  scope :hard, -> { where(level: (5..Float::INFINITY)) }
   scope :by_category_title, -> (category_title) { joins(:category)
     .where(categories: { title: category_title })
   }
@@ -23,16 +26,5 @@ class Test < ApplicationRecord
   def self.category_sort_desc (category_title)
    by_category_title(category_title).order(id: :desc).pluck(:title)
   end
-
-  def self.levels_by_difficult(value)
-    case value
-    when "easy"
-      (0..1) 
-    when "medium"
-      (2..4)
-    when "hard"
-      (5..Float::INFINITY)
-    end
-  end  
 
 end
