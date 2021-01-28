@@ -6,53 +6,57 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-unless Test.exists?
+unless Test.exists? #&& Category.exists? && User.exists?  && Question.exists? && Answer.exists? 
   categories = Category.create!([
-    {title: 'c1'},
-    {title: 'c2'}
+    { title: "Category1" },
+    { title: "Category2" }
   ])
+# end
 
+# unless User.exists?
   users = User.create!([
-    {name: 'U1'},
-    {name: 'U2'}
+    { name: "User1", email: "User1@mail.ru" },
+    { name: "User2", email: "User2@gmail.com" }
   ])
+# end
 
+# unless Test.exists?
   tests = Test.create!([
-    {title: 't1', category: category[0], author_id: users[1].id},
-    {title: 't2', category: category[1], author_id: users[1].id}
-  ]) 
+    { title: "Test1",           category: categories[0], author: users[0] },
+    { title: "Test2", level: 1, category: categories[1], author: users[1] },
+    { title: "Test3", level: 5, category: categories[0], author: users[1] }
+  ])
+# end
 
+# unless Question.exists?
   questions = Question.create!([
-    {title: 'q1', test_id: tests[0].id},
-    {title: 'q2', test_id: tests[0].id},
-    {title: 'q3', test_id: tests[0].id},
-    {title: 'q4', test_id: tests[1].id},
-    {title: 'q5', test_id: tests[1].id},
-    {title: 'q6', test_id: tests[1].id},
-
+    { title: "Question1", test: tests[0] },
+    { title: "Question2", test: tests[0] },
+    { title: "Question3", test: tests[1] },
+    { title: "Question4", test: tests[1] },
+    { title: "Question5", test: tests[2] },
+    { title: "Question6", test: tests[2] }
   ])
+# end
 
-  answers = Answer.create!([
-    {title: 'a1', question_id: questions[0].id, correct: true},
-    {title: 'a2', question_id: questions[0].id},
-    {title: 'a3', question_id: questions[1].id},
-    {title: 'a4', question_id: questions[1].id, correct: true},
-    {title: 'a5', question_id: questions[2].id},
-    {title: 'a6', question_id: questions[2].id},
-    {title: 'a7', question_id: questions[2].id, correct: true},
-    {title: 'a8', question_id: questions[3].id, correct: true},
-    {title: 'a9', question_id: questions[3].id},
-    {title: 'a10', question_id: questions[3].id},
-    {title: 'a11', question_id: questions[4].id},
-    {title: 'a12', question_id: questions[4].id, correct: true},
-    {title: 'a13', question_id: questions[5].id},
-    {title: 'a14', question_id: questions[5].id, correct: true},
-
+# unless Answer.exists?
+  Answer.create!([
+    { title: "Answer1", question: questions[0], correct: true },
+    { title: "Answer2", question: questions[0] },
+    { title: "Answer3", question: questions[1], correct: true },
+    { title: "Answer4", question: questions[2] },
+    { title: "Answer5", question: questions[3] },
+    { title: "Answer6", question: questions[3], correct: true },
+    { title: "Answer7", question: questions[4] },
+    { title: "Answer8", question: questions[5] }
   ])
+# end
 
+# unless TestsUser.exists?
   TestsUser.create!([
-    {user_id: users[0].id, test_id: tests[0].id},
-    {user_id: users[0].id, test_id: tests[1].id}
+    { user: users[0], passed_test: tests[0] },
+    { user: users[0], passed_test: tests[1] },
+    { user: users[0], passed_test: tests[2] }
   ])
 
 end
