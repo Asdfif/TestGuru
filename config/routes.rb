@@ -4,11 +4,7 @@ Rails.application.routes.draw do
   root 'tests#index'
 
   resources :tests do
-    resources :questions, shallow: true
+    resources :questions
   end
-
-  get '/tests/:test_id/questions/:id', to: 'questions#show'
-
-  get '/tests/:test_id/questions/:id/delete', to: 'questions#destroy'
 
 end

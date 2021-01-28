@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   
-  before_action :set_test
-  before_action :find_question, only: %i[show destroy]
+  before_action :set_test,     only: %i[index new create]
+  before_action :set_question, only: %i[show destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -11,27 +11,23 @@ class QuestionsController < ApplicationController
     render json: @questions
   end
 
-  def show
-    
-  end
+  def show; end
 
-  def new
-
-  end
+  def new; end
 
   def create 
     @question = @test.questions.build(question_params)
     if @question.save
-      redirect_to test_questions_path
+      redirect_to test_questions_path(params[:test_id])
     else
       render :new
     end
   end
 
   def destroy
-    render inline: 'Qestion <%= @question.title %> from test <%= @test.title %> deleted!'
-
     @question.destroy
+
+    render inline: 'Qestion <%= @question.title %> from test <%=  %> deleted!'
   end
 
   private
@@ -40,13 +36,12 @@ class QuestionsController < ApplicationController
     @test = Test.find(params[:test_id])
   end
 
-  def find_question
-    @question = @test.questions.where(id: params[:id]).first
+  def set_question
+    @question = Question.find(params[:id])
   end
 
   def question_params
-    test = @test
-    params.require(:question).permit(:title).merge! test: test
+    params.require(:question).permit(:title, :test)
   end
 
 

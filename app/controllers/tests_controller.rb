@@ -6,7 +6,7 @@ class TestsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   def index
-    result = ["Class: #{params.class}","Parameters: #{params.inspect}"]
+    result = Test.pluck(:title)
 
     render plain: result.join("\n")
   end
@@ -15,14 +15,15 @@ class TestsController < ApplicationController
     render inline: '<%= @test.title %>' 
   end
 
-  def new
-
-  end
+  def new; end
 
   def create 
-    test = Test.create!(test_params)
-    
-    render plain: test.inspect
+    test = Test.create(test_params)
+    if test.save
+      redirect_to tests_path
+    else
+      render :new
+    end
   end
 
   def search
@@ -47,12 +48,6 @@ class TestsController < ApplicationController
 
   def rescue_with_test_not_found
     render plain: "Test was not found"
-  end
-
-  def self.all_tests
-    Test.all.map do |test|
-      test.title
-    end
   end
 
 end
