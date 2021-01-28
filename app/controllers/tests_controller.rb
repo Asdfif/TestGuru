@@ -1,6 +1,5 @@
 class TestsController < ApplicationController
 
-  before_action :set_test, only: %i[show]
   after_action :send_log_message
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
@@ -12,6 +11,7 @@ class TestsController < ApplicationController
   end
 
   def show
+    set_test
     render inline: '<%= @test.title %>' 
   end
 
