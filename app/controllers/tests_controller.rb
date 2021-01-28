@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
 
-  before_action :find_test, only: %i[show]
+  before_action :set_test, only: %i[show]
   after_action :send_log_message
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
@@ -38,7 +38,7 @@ class TestsController < ApplicationController
     params.require(:test).permit(:title, :level)
   end
 
-  def find_test
+  def set_test
     @test = Test.find(params[:id])
   end
 
