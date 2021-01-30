@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
   def create 
     @question = @test.questions.build(question_params)
     if @question.save
-      redirect_to test_questions_path(params[:test_id])
+      redirect_to test_questions_path(@test)
     else
       render :new
     end
@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    
+
     redirect_to test_questions_path(test_id: @question.test_id)
   end
 
