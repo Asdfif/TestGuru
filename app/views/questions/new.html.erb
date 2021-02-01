@@ -1,21 +1,4 @@
-<h1>Create New Question</h1>
-<% #byebug %>
-<%= form_with model: @questions, local: true do |form| %>
-  <% if @question.errors.present? %>
-  <div>
-    <h2><%= pluralize(@question.errors.count, 'error') %> detected:</h2>
-    <ul>
-      <% @question.errors.full_message do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+<h1><%= question_header(:post, @test) %></h1>
 
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title, id: :question_title%><br>
-  </p><br>
-
-  <%= form.submit %>
-<% end %>
+<%= render 'form' %>
+<%= link_to "Back to #{@test.title}", test_path(id: params[:test_id]) %>
