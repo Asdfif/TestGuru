@@ -1,12 +1,21 @@
 <h1>Create New Question</h1>
-
-<form action="/tests/<%=params[:test_id]%>/questions" method="post">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<% #byebug %>
+<%= form_with model: @questions, local: true do |form| %>
+  <% if @question.errors.present? %>
+  <div>
+    <h2><%= pluralize(@question.errors.count, 'error') %> detected:</h2>
+    <ul>
+      <% @question.errors.full_message do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
   <p>
-    <label for="question-title">Title:</label>
-    <input type="text" name="question[title]" id="question-title">
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :question_title%><br>
   </p><br>
 
-  <input type="submit" value="Create">
-</form>
+  <%= form.submit %>
+<% end %>

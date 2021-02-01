@@ -5,31 +5,51 @@ class TestsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   def index
-    result = Test.pluck(:title)
-
-    render plain: result.join("\n")
+    @tests = Test.all
   end
 
   def show
     set_test
-    render inline: '<%= @test.title %>' 
   end
 
-  def new; end
+  def new
+    @test = Test.new
+  end
 
   def create 
-    test = Test.create(test_params)
-    if test.save
+    @test = Test.create!(test_params)
+    byebug
+    if @test.save
       redirect_to tests_path
     else
       render :new
     end
   end
 
+  def destroy
+    set_test
+
+    @test.destroy
+    redirect_to tests_path
+  end
+
+  def edit
+    set_test 
+  end
+
+  def update
+    set_test
+    if @test.update(test_params)
+      redirect_to @test
+    else
+      render :edit
+    end
+  end 
+
   private
 
   def test_params
-    params.require(:test).permit(:title, :level)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 
   def set_test
