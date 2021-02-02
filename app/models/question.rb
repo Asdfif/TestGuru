@@ -4,5 +4,6 @@ class Question < ApplicationRecord
   
   has_many :answers, dependent: :destroy
 
-  validates :title, uniqueness: {scope: :test}
+  validates :title, presence: true,
+                    uniqueness: {scope: :test}
 end
