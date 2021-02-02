@@ -1,7 +1,6 @@
 class TestsController < ApplicationController
 
   before_action :set_test, only: %i[show destroy edit update]
-  after_action :send_log_message
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -9,8 +8,7 @@ class TestsController < ApplicationController
     @tests = Test.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @test = Test.new
@@ -18,7 +16,6 @@ class TestsController < ApplicationController
 
   def create 
     @test = Test.create!(test_params)
-    byebug
     if @test.save
       redirect_to tests_path
     else
@@ -32,8 +29,7 @@ class TestsController < ApplicationController
     redirect_to tests_path
   end
 
-  def edit 
-  end
+  def edit; end
 
   def update
     if @test.update(test_params)
@@ -51,10 +47,6 @@ class TestsController < ApplicationController
 
   def set_test
     @test = Test.find(params[:id])
-  end
-
-  def send_log_message
-    logger.info("Action [#{ action_name }] was finished")
   end
 
   def rescue_with_test_not_found

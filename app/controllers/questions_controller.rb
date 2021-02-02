@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def create 
+    byebug
     @question = @test.questions.build(question_params)
     if @question.save
       redirect_to test_path(@test)
