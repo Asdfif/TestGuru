@@ -54,7 +54,7 @@ class TestsController < ApplicationController
   end
 
   def send_log_message
-    logger.info("Action [#{action_name}] was finished")
+    logger.info("Action [#{ action_name }] was finished")
   end
 
   def rescue_with_test_not_found
