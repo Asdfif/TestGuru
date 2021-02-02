@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def github_url(author, repo)
-    link_to "#{author} - TestGuru", repo.to_s
+    link_to "#{author} - TestGuru", repo
   end
 
 end
