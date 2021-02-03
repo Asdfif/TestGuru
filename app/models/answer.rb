@@ -6,7 +6,7 @@ class Answer < ApplicationRecord
   
   validate :count_of_answers, on: :create
 
-  scope :right_answers, -> { where(correct: true) }
+  scope :correct, -> { where(correct: true) }
 
   def count_of_answers
     if question.answers.count >= 4

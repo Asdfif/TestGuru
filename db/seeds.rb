@@ -53,10 +53,10 @@ unless Test.exists? #&& Category.exists? && User.exists?  && Question.exists? &&
 # end
 
 # unless TestsUser.exists?
-  TestsUser.create!([
-    { user: users[0], passed_test: tests[0] },
-    { user: users[0], passed_test: tests[1] },
-    { user: users[0], passed_test: tests[2] }
-  ])
+  # TestsUser.create!([
+  #   { user: users[0], passed_test: tests[0] },
+  #   { user: users[0], passed_test: tests[1] },
+  #   { user: users[0], passed_test: tests[2] }
+  # ])
 
 end
