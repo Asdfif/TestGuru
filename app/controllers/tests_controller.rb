@@ -25,7 +25,6 @@ class TestsController < ApplicationController
   end
 
   def destroy
-
     @test.destroy
     redirect_to tests_path
   end
