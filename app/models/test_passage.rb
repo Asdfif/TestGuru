@@ -18,7 +18,15 @@ class TestPassage < ApplicationRecord
   end
 
   def percent_of_success
-    correct_questions.to_f/self.test.questions.size
+    correct_questions.to_f*100/self.test.questions.size
+  end
+
+  def success?
+    percent_of_success >= 100
+  end
+
+  def questions_passed(current_question)
+    test.questions.index(current_question) + 1
   end
 
   private
@@ -28,7 +36,9 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
-    correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+    correct_answers_count = correct_answers.count
+    (correct_answers_count == correct_answers.where(id: answer_ids).count) &&
+    (correct_answers_count == answer_ids.count)
   end
 
   def correct_answers

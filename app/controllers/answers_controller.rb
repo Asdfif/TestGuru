@@ -11,7 +11,6 @@ class AnswersController < ApplicationController
   def edit; end
 
   def create
-    byebug
     @answer = @question.answers.build(answer_params)
 
     if @answer.save

@@ -1,14 +1,15 @@
-<h1>The <%= @test_passage.test.title %> was completed!</h1>
+<% title = @test_passage.test.title %>
+<h1>The <%= title %> was completed!</h1>
 
 <h2>
   Test passing success - 
-  <% percent = @test_passage.percent_of_success*100 %>
-  <% if success? %>
-  <font color ="green"><%= percent%>%</font>
-  <%= @test_passage.test.title%> passed successfully!
+  <% percent = @test_passage.percent_of_success %>
+  <% if @test_passage.success? %>
+ <span class="success"><%= percent%>%</span>
+  <%= title %> passed successfully!
   <% else %>
-  <font color="red"><%= percent%>%</font>
-  <%= @test_passage.test.title%> failed!
+  <span class="fail"><%= percent%>%</span>
+  <%= title %> failed!
   <% end %>
 </h2>
 

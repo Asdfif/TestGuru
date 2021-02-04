@@ -3,7 +3,7 @@
 <b>
   <% current_question = @test_passage.current_question%>
   <%= current_question.title %>
-  <%= questions_left(current_question) %>
+  [<%= @test_passage.questions_passed(current_question) %> / <%= @test_passage.test.questions.size %>]
 </b>
 
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>

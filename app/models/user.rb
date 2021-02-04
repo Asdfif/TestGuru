@@ -12,8 +12,8 @@ class User < ApplicationRecord
     .where(tests_users: {user_id: id})
   end
 
-  def test_passage(test)
-    test_passages.order(id: :desc).find_by(test_id: test.id)
+  def test_passage
+    test_passages.last
   end
 
 end
