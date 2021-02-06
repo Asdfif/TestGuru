@@ -6,4 +6,5 @@ class Question < ApplicationRecord
 
   validates :title, presence: true,
                     uniqueness: {scope: :test}
+
 end

@@ -29,34 +29,30 @@ unless Test.exists? #&& Category.exists? && User.exists?  && Question.exists? &&
 # end
 
 # unless Question.exists?
-  questions = Question.create!([
-    { title: "Question1", test: tests[0] },
-    { title: "Question2", test: tests[0] },
-    { title: "Question3", test: tests[1] },
-    { title: "Question4", test: tests[1] },
-    { title: "Question5", test: tests[2] },
-    { title: "Question6", test: tests[2] }
-  ])
-# end
+
+  for i in (1..22)
+    if i <9
+      Question.create!(title: "Question#{i}", test: tests[0])
+    elsif i <17
+      Question.create!(title: "Question#{i}", test: tests[1])
+    else 
+      Question.create!(title: "Question#{i}", test: tests[2])  
+    end
+  end
+
 
 # unless Answer.exists?
-  Answer.create!([
-    { title: "Answer1", question: questions[0], correct: true },
-    { title: "Answer2", question: questions[0] },
-    { title: "Answer3", question: questions[1], correct: true },
-    { title: "Answer4", question: questions[2] },
-    { title: "Answer5", question: questions[3] },
-    { title: "Answer6", question: questions[3], correct: true },
-    { title: "Answer7", question: questions[4] },
-    { title: "Answer8", question: questions[5] }
-  ])
-# end
-
-# unless TestsUser.exists?
-  TestsUser.create!([
-    { user: users[0], passed_test: tests[0] },
-    { user: users[0], passed_test: tests[1] },
-    { user: users[0], passed_test: tests[2] }
-  ])
+questions = Question.all
+  for j in (1..22)
+    for i in (1..2)
+      Answer.create!(
+        title: "Answer#{ if i == 1 
+                            (j*2-i) 
+                          else 
+                            (j*2) 
+                          end
+                        }", question: questions[j-1], correct: i==1)
+    end
+  end
 
 end
