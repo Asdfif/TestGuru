@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :own_tests, class_name: "Test", foreign_key: "author_id"
 
+  has_secure_password
+
   validates :email, presence: true
 
   def completed_tests(level)
