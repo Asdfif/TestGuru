@@ -9,7 +9,7 @@ class User < ApplicationRecord
   def completed_tests(level)
     Test.joins(:tests_users)
     .by_level(level)
-    .where(tests_users: {user_id: id})
+    .where(tests_users: { user_id: id })
   end
 
   def test_passage(test)

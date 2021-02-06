@@ -18,11 +18,11 @@ class TestPassage < ApplicationRecord
   end
 
   def percent_of_success
-    correct_questions.to_f*100/self.test.questions.size
+    correct_questions.to_f * 100 / self.test.questions.size
   end
 
   def success?
-    percent_of_success >= 100
+    percent_of_success >= 85
   end
 
   def questions_passed(current_question)
