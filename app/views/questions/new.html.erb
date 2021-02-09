@@ -1,4 +1,4 @@
 <h1><%= question_header(@test) %></h1>
 
 <%= render 'form' %>
-<%= link_to "Back to #{ @test.title }", test_path(id: params[:test_id]) %>
+<%= link_to "Back to #{ @test.title }", admin_test_path(id: params[:test_id]) %>
