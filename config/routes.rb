@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   
   root 'tests#index'
   
-  devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
+  devise_for :users, path: :gurus, 
+                     path_names: { sign_in: :login, sign_out: :logout }
 
   resources :tests, only: %i[index show] do
-    resources :questions, shallow: true, only: :show do #except: :index do
-      resources :answers, shallow: true, only: :show#except: :index
+    resources :questions, shallow: true, only: :show do 
+      resources :answers, shallow: true, only: :show
     end
     member do 
       post :start
