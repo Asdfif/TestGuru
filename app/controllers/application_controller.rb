@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def after_sign_in_path_for(resource)
-    flash[:notice] = "Привет, #{resource.first_name} #{resource.last_name} ! " unless resource.first_name.empty? || resource.last_name.empty?
     if resource.is_a?(Admin)
       admin_tests_path
     else
+      stored_location_for(resource)
       super
     end
   end

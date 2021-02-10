@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   root 'tests#index'
   
   devise_for :users, path: :gurus, 
-                     path_names: { sign_in: :login, sign_out: :logout }
+                     path_names: { sign_in: :login, sign_out: :logout },
+                     controllers: {sessions: 'sessions'}
 
   resources :tests, only: %i[index show] do
     resources :questions, shallow: true, only: :show do 
