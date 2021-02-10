@@ -12,10 +12,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def registration_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name)
-  end
-
   protected
 
   def configure_permitted_parameters
