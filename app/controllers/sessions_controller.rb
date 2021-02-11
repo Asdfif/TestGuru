@@ -2,8 +2,8 @@ class SessionsController < Devise::SessionsController
 
   def create
     super
-    user = current_user
-    flash[:notice] = "Привет, #{user.first_name} #{user.last_name} ! " unless user.first_name.empty? || user.last_name.empty?
-  end 
-
+    unless current_user.first_name.blank? || current_user.last_name.blank?
+      flash[:notice] = "Привет, #{current_user.first_name} #{current_user.last_name} ! "
+    end
+  end
 end
