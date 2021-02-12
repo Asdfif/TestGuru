@@ -1,0 +1,6 @@
+<tr>
+  <td><%=link_to "#{gist.question.title.slice(0..24)}", gist.question %></td>
+  <td><%= gist.user.email %></td>
+  <td><%= link_to "#{gist.gist_url.slice(0..30)}...", gist.gist_url, target: :_blank , rel: :nofollow %></td>
+
+</tr>

@@ -1,6 +1,6 @@
 class GistQuestionService
 
-  ACCESS_TOKEN = 'ad4393fbae87bb5046b6dfd43353023fbe28f993'.freeze
+  ACCESS_TOKEN = Rails.application.credentials.git_hub_gist_token!
 
   def initialize(question, client: nil)
     @question = question
@@ -32,30 +32,3 @@ class GistQuestionService
   end
 
 end
-
-
-# class Octokit::Client 
-
-#   ROOT_ENDPOINT = "https://api.github.com".freeze
-
-#   def initialize
-#     # @http_client = setup_http_client
-#     access_token: ACCESS_TOKEN
-#   end
-
-#   def create_gist(params)
-#     post('gists') do |request|
-#       request.headers['Authorization'] = "token #{ACCESS_TOKEN}"
-#       request.headers['Content-Type'] = 'application/json'
-#       request.body = params.to_json
-#     end
-#   end
-
-#   private
-
-  # def setup_http_client
-  #   Faraday.new(url: ROOT_ENDPOINT)
-  # end
-
-# end
-
