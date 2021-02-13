@@ -1,11 +1,17 @@
+<% if @gists.blank? %>
+  <h1>No gists</h1>
+<% else%>
 <h1>Gists</h1>
+<h2><%= link_to "Delet all Gists", admin_delete_all_gists_path, method: :delete %></h2>
 
-<table>
-  <tr>
-    <th>Question</th>
-    <th>User name</th>
-    <th>URL</th>
-  </tr>
+  <table>
+    <tr>
+      <th>Question</th>
+      <th>User name</th>
+      <th>URL</th>
+    </tr>
 
-  <%= render @gists %>
+    <%= render @gists %>
+<% end %>
+
 </table>
