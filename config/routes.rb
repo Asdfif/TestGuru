@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   root 'tests#index'
-  
+
+  delete '/admin/gists', to: 'admin/gists#delete_all', as: 'admin_delete_all_gists'
+
   devise_for :users, path: :gurus, 
                      path_names: { sign_in: :login, sign_out: :logout },
                      controllers: {sessions: 'sessions'}
@@ -19,9 +20,9 @@ Rails.application.routes.draw do
   end
 
   resources :test_passages, only: %i[show update] do
+    resources :gists, only: :create
     member do
       get :result
-      post :gist
     end
   end
 
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
         resources :answers, shallow: true
       end
     end
+    resources :gists, only: :index
   end
 
 end

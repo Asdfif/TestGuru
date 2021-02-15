@@ -15,8 +15,9 @@ unless Test.exists? #&& Category.exists? && User.exists?  && Question.exists? &&
 
 # unless User.exists?
   users = User.create!([
-    { email: "U1@mail.ru", password: '123456' },
-    { email: "U2@mail.ru", password: '123456' }
+    { email: "U1@mail.ru", password: '123456', firs_name: 'U1', last_name: 'AAA', type: "Admin" },
+    { email: "U2@mail.ru", password: '123456'. firs_name: 'U2', last_name: 'BBB', type: "Admin"  },
+    { email: "U3@mail.ru", password: '123456'. firs_name: 'U3', last_name: 'CCC'}
   ])
 # end
 
