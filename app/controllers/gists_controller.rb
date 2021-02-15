@@ -7,12 +7,9 @@ class GistsController < ApplicationController
 
     question = @test_passage.current_question
 
-    result = GistQuestionService.new(question).call
-
-    url_gist = result[:html_url]
-    
+    url_gist = GistQuestionService.new(question).call.html_url
     if url_gist.present?
-      flash[:notice] = t('.success', url: (view_context.link_to  "Gist #{question.title}", url_gist, target: :_blank , rel: :nofollow))
+      flash[:notice] = t('.success', url: url_gist, question_title: question.title)
       Gist.create!(gist_url: url_gist, user: current_user, question: question)
     else
       flash[:alert] = t('.failure') 
