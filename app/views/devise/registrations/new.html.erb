@@ -13,12 +13,14 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", id: "txtNewPassword" %>
   </div>
 
-  <div class="field">
+  <div class="field confirmation">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "txtConfirmPassword" %>
+    <%= octicon 'check', class: 'text-success hide green', color: '#32CD32' %>
+    <%= octicon 'x', class: 'text-success hide red', color: '#FF4500' %>    
   </div>
 
   <div class="field"> 
@@ -30,7 +32,6 @@
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-
 
   <div class="actions">
     <%= f.submit "Sign up" %>
