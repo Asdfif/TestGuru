@@ -1,30 +1,31 @@
 document.addEventListener('turbolinks:load', function() {
-  console.log('Hello from confirmation.js')
-
   var field = document.querySelector('.confirmation')
 
   if (field) {
-    field.addEventListener('input', checkPasswordMatch)
+    let conf = document.getElementById("user_password_confirmation")
+    let pass = document.getElementById("user_password")
+    let check = document.querySelector('.octicon-check')
+    let x = document.querySelector('.octicon-x') 
+
+    field.addEventListener('input', function() { 
+      checkPasswordMatch(conf, pass, check, x)
+    })
   }
 })
 
-function checkPasswordMatch() {
-  var confirmPassword = document.getElementById("user_password_confirmation")
-  var password = document.getElementById("user_password")
-
-  console.log('CHECKING PASSWORD')
-  if (confirmPassword.value != "") {
-    if (confirmPassword.value != password.value) {
-      document.querySelector('.octicon-check').classList.add('hide')
-      document.querySelector('.octicon-x').classList.remove('hide')  
-    } 
-    else {
-      document.querySelector('.octicon-check').classList.remove('hide')
-      document.querySelector('.octicon-x').classList.add('hide')
-    }    
-  }
-  else {
-    document.querySelector('.octicon-check').classList.add('hide')
-    document.querySelector('.octicon-x').classList.add('hide')
-  }  
+function checkPasswordMatch(confirmPassword, password, check_icon, x_icon) {
+  switch (confirmPassword.value) {
+    case "" :
+      check_icon.classList.add('hide')
+      x_icon.classList.add('hide')
+      break
+    case password.value :
+      check_icon.classList.remove('hide')
+      x_icon.classList.add('hide')
+      break
+    default :
+      check_icon.classList.add('hide')
+      x_icon.classList.remove('hide')  
+      break
+  } 
 }
