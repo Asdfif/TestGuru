@@ -1,4 +1,3 @@
-
 document.addEventListener('turbolinks:load', function() {
   console.log('Hello from confirmation.js')
 
@@ -28,5 +27,4 @@ function checkPasswordMatch() {
     document.querySelector('.octicon-check').classList.add('hide')
     document.querySelector('.octicon-x').classList.add('hide')
   }  
-
 }
