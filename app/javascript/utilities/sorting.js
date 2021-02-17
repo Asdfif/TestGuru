@@ -30,16 +30,15 @@ function sortRowsByTitle(table) {
 
 function sortedRows(asc_or_desc, table) {
 
-  const sortedRows = Array.from(table.rows)
+  const rows = Array.from(table.rows)
     .slice(1)
     switch (asc_or_desc) {
       case "asc" :
-        sortedRows.sort((rowA, rowB) => (rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1))
+        rows.sort((rowA, rowB) => (rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1))
         break
       case "desc" :
-        sortedRows.sort((rowA, rowB) => (rowA.cells[0].innerHTML < rowB.cells[0].innerHTML ? 1 : -1))
+        rows.sort((rowA, rowB) => (rowA.cells[0].innerHTML < rowB.cells[0].innerHTML ? 1 : -1))
         break
     }
-  
-  table.tBodies[0].append(...sortedRows)
+  table.tBodies[0].append(...rows)
 }
