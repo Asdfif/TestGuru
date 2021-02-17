@@ -16,9 +16,11 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+  <div class="field confirmation">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= octicon 'check', class: 'text-success hide', color: '#32CD32' %>
+    <%= octicon 'x', class: 'text-success hide', color: '#FF4500' %>    
   </div>
 
   <div class="field"> 
@@ -30,7 +32,6 @@
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-
 
   <div class="actions">
     <%= f.submit "Sign up" %>
