@@ -2,10 +2,10 @@ document.addEventListener('turbolinks:load', function() {
   var field = document.querySelector('.confirmation')
 
   if (field) {
-    let conf = document.getElementById("user_password_confirmation")
-    let pass = document.getElementById("user_password")
-    let check = document.querySelector('.octicon-check')
-    let x = document.querySelector('.octicon-x') 
+    const conf = document.getElementById("user_password_confirmation")
+    const pass = document.getElementById("user_password")
+    const check = document.querySelector('.octicon-check')
+    const x = document.querySelector('.octicon-x') 
 
     field.addEventListener('input', function() { 
       checkPasswordMatch(conf, pass, check, x)
