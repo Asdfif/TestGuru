@@ -2,10 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.fail{
+.fail {
   color:  #FF0000;
 }
 
-.success{
+.success {
   color:  #008000;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 0px;
+  background: #00FA9A;
+  border: 2px solid;
+  padding: 10px;
+  border-radius: 8px;
 }
