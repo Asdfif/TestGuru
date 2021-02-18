@@ -53,4 +53,6 @@ en:
   admin:
     tests:
       create:
-        success: "Test was succeGuru test!"          
+        success: "Test was succeGuru test!"
+      form_inline:
+        submit: "OK"
