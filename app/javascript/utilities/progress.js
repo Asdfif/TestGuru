@@ -1,5 +1,5 @@
 document.addEventListener('turbolinks:load', function() {
-  var line = document.querySelector('.progress-bar')
+  const line = document.querySelector('.progress-bar')
 
   if (line) {
     const currentQuestionNumber = line.dataset.currentQuestionNumber
