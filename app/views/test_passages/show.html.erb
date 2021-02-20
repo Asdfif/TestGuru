@@ -6,7 +6,9 @@
     <%= current_question.title %>
     [<%= @test_passage.questions_passed(current_question) %> / <%= @test_passage.test.questions.size %>]
   </b>
+  <p class='progress-bar', data-current-question-number="<%=@test_passage.questions_passed(current_question)%>", data-test-questions-count="<%=@test_passage.test.questions.size%>"></p>
 </p>
+
 
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, current_question.answers, :id, :title, include_hidden: false do |b| %>
