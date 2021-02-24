@@ -1,17 +1,19 @@
 class Admin::BadgesController < Admin::BaseController
 
-  before_action :all_badges, only: %i[index]
+  before_action :set_badge, only: %i[edit update destroy]
 
   def index
-    
+    all_badges
   end
 
-  def edit
-    
-  end
+  def edit; end
 
   def update
-    
+    if @badge.update(badge_params)
+      redirect_to admin_badges_path(@badge)
+    else
+      render :edit
+    end
   end
 
   def new
@@ -28,7 +30,8 @@ class Admin::BadgesController < Admin::BaseController
   end
 
   def destroy
-    
+    @badge.destroy
+    redirect_to admin_badges_path
   end
 
   private
@@ -41,51 +44,8 @@ class Admin::BadgesController < Admin::BaseController
     params.require(:badge).permit(:title, :img_url, :rule_type, :rule_value)
   end
 
+  def set_badge
+    @badge = Badge.find(params[:id])
+  end
+
 end
-
-# def create
-
-#     standart_params = badge_params.each { |key, value| value.reject!(&:blank?) if value.is_a?(Array) }
-#     tests = []
-#     if standart_params[:categories].present?
-#       standart_params[:categories].each { |category|
-#         tests.concat(Test.where(category: category).to_a)
-#       }
-#     end
-
-#     if standart_params[:levels].present?
-#       standart_params[:levels].each { |level|
-#         tests.concat(Test.where(level: level).to_a)
-#       }
-#     end
-
-#     if standart_params[:tests].present?
-#       tests.concat(standart_params[:tests])
-#     end
-
-#     if standart_params[:first_time] == "1"
-#       standart_params[:first_time] = true
-#     else
-#       standart_params[:first_time] = false
-#     end
-
-#     standart_params.delete("categories")
-#     standart_params.delete("levels")
-#     standart_params.delete("tests")
-
-#     @badge = current_user.badges.build(standart_params)
-#     tests.uniq!
-    
-#     @badge.tests.concat(tests)
-
-#     if @badge.save!
-#       redirect_to admin_badges_path
-#     else
-#       render :new
-#     end
-#   end
-
-
-  # def badge_params
-  #   params.require(:badge).permit(:title, :img_url, :first_time , tests: [], categories: [], levels: [])
-  # end

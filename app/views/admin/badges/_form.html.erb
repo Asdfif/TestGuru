@@ -1,10 +1,6 @@
-<% #byebug %>
+
 <%= form_with model: [:admin, @badge], local: true do |form| %>
 <%= render 'shared/errors', resource: @badge %>
-  <p>
-    <%= form.label :first_time %>
-    <%= form.check_box :first_time %>  
-  </p>
 
   <p>
     <%= form.label :title %><br>
@@ -13,23 +9,17 @@
 
   <p>
     <%= form.label :img_url %><br>
-    <%= form.text_field :img_url, id: :badge_title %><br>
+    <%= form.text_field :img_url, id: :badge_img_url %><br>
   </p>
 
   <p>
-    <%= form.label :tests %><br>
-    <%= form.collection_select :tests, Test.all, :itself, :title, {}, { multiple: true } %><br> 
+    <%= form.label :rule_type %><br>
+    <%= form.collection_select :rule_type, BadgeDepartamentService::RULES.keys, :itself, :to_s, {} %><br> 
   </p>
 
   <p>
-    <%= form.label :levels %><br>
-    <%= form.collection_select :levels, tests_levels, :itself , :itself, {}, { multiple: true }%><br>
-  </p>
-
-
-  <p>
-    <%= form.label :categories %><br>
-    <%= form.collection_select :categories, Category.all, :itself, :title, {}, { multiple: true } %>
+    <%= form.label :rule_value %><br>
+    <%= form.text_field :rule_value, id: :badge_rule_value %><br>
   </p>
 
   <%= form.submit %>

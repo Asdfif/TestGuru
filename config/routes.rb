@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root 'tests#index'
 
   delete '/admin/gists', to: 'admin/gists#delete_all', as: 'admin_delete_all_gists'
+  get '/guru/:guru_id/badges', to: 'badges#guru_badges', as: 'guru_badges'
+
 
   devise_for :users, path: :gurus, 
                      path_names: { sign_in: :login, sign_out: :logout },
@@ -35,7 +37,9 @@ Rails.application.routes.draw do
       end
     end
     resources :gists, only: :index
-    resources :badges#, only: %i[index create update destroy]
+    resources :badges, except: %i[show]
   end
+
+  resources :badges, only: %i[index]
 
 end
