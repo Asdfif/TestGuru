@@ -1,0 +1,13 @@
+<% if @badges.blank? %>
+  <h1>No badges</h1>
+<% else%>
+  <h1>Badges</h1>
+    <table>
+      <tr>
+        <th>Title</th>
+      </tr>
+
+      <%= render @badges %>
+
+  </table>
+<% end %>

@@ -1,0 +1,36 @@
+<% #byebug %>
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+<%= render 'shared/errors', resource: @badge %>
+  <p>
+    <%= form.label :first_time %>
+    <%= form.check_box :first_time %>  
+  </p>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :badge_title %><br>
+  </p>
+
+  <p>
+    <%= form.label :img_url %><br>
+    <%= form.text_field :img_url, id: :badge_title %><br>
+  </p>
+
+  <p>
+    <%= form.label :tests %><br>
+    <%= form.collection_select :tests, Test.all, :itself, :title, {}, { multiple: true } %><br> 
+  </p>
+
+  <p>
+    <%= form.label :levels %><br>
+    <%= form.collection_select :levels, tests_levels, :itself , :itself, {}, { multiple: true }%><br>
+  </p>
+
+
+  <p>
+    <%= form.label :categories %><br>
+    <%= form.collection_select :categories, Category.all, :itself, :title, {}, { multiple: true } %>
+  </p>
+
+  <%= form.submit %>
+<% end %>

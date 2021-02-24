@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       end
     end
     resources :gists, only: :index
+    resources :badges#, only: %i[index create update destroy]
   end
 
 end
