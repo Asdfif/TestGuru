@@ -1,4 +1,4 @@
-<h1>Pass the <%= @test_passage.test.title %> Test</h1>
+<h1><%= t('.passing', test: @test_passage.test.title) %></h1>
 
 <p>  
   <b>
@@ -18,6 +18,6 @@
     </p>
   <% end %>
 
-  <p><%= link_to 'Gist Question', test_passage_gists_path(@test_passage), method: :post %></p>
-  <p><%= form.submit 'Next' %></p>
+  <p><%= link_to t('.gist'), test_passage_gists_path(@test_passage), method: :post %></p>
+  <p><%= form.submit t('.next') %></p>
 <% end %>

@@ -5,6 +5,8 @@ class AbstractRuleSpecification
     @test_passage = test_passage
   end
 
-  def satisfies?; end
+  def satisfies?
+    raise "#{__method__} undefined for #{self.class}" 
+  end
 
 end

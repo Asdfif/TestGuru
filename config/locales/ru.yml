@@ -12,13 +12,65 @@ ru:
   tests:
     index:
       header: "Доступные Тесты"
-
+      tests: "Тесты"
+      title: "Название"
+      level: "Сложность"
+      questions: "Вопросы"
+      actions: "Действия"
+    rescue_with_test_not_found:
+        not_found: "Тест не найден"
+    test:
+      show: "Показать"
+      start: "Начать"
+    show:
+      title: "Title"
+      level: "Level"
+      questions: "Questions"
+      actions: "Actions"
+      back: "Back"
+      
   test_passages:
     result:
       header: "Тест %{title} успешно завершен"
+      complete: "The %{title} was completed!"
+      success: "Test passing success"
+      successfully: "%{title} passed successfully!"
+      failed: "%{title} failed!"
+      back: "Back to tests"
     gist:
       success: "Gist успешно сохранен!"
       failure: "Во время сохранения gist произошла ошибка"
+    show:
+      passing: "Прохождение теста %{test}"
+      gist: "Создать гист к вопросу"
+      next: "Дальше"
+
+  questions:
+    rescue_with_question_not_found:
+      not_found: "Вопрос не найден"
+    question:
+      show: "Показать"
+    show:
+      back: "Назад к %{test}"
+
+  sessions:
+    create:
+      hello: "Привет %{first_name} %{last_name}!"
+
+  answers:
+    answer:
+      show: "Show"
+    show:
+      back: "Назад к %{question}"
+
+  badges:
+    index:
+      badges: "Бейджи"
+      title: "Название"
+      image: "Картинка"
+      rule_type: "Тип правили"
+      rule_value: "Значение правила"
+      all_badges: "ВСе бейджи"
 
   admin:
     tests:
@@ -28,6 +80,103 @@ ru:
         header: "Доступные тесты"
       form_inline:
         submit: "Окей"
+      index:
+        not_authorized!: 'Нет доступа к этой странице.'
+        tests: "Тесты"
+        new_test: "Новый тест"
+        title: "Название"
+        level: "Сложность"
+        questions: "Вопросы"
+        actions: "Действия"
+      new:
+        back: "Назад"
+      show:
+        title: "Название:"
+        level: "Сложность:"
+        questions: "Вопросы:"
+        actions: "Действия"
+        new_question: "Создать новый вопрос"
+        edit: "Изменить"
+        back: "Назад"
+
+      rescue_with_test_not_found:
+        not_found: "Тест не найден"
+      test:
+        easy: "легко"
+        medium: "средне"
+        hard: "сложно"
+        show: "Показать"
+        edit: "Изменить"
+        delete: "Удалить"
+        sure?: "Вы уверены?"
+      edit:
+        back: "Назад"
+
+    answers:
+      answer:
+        show: "Показать"
+        edit: "Изменить"
+        delete: "Удалить"
+        sure?: "Вы уверены?"
+      edit:
+        back: "Назад к %{question}"
+      new:
+        back: "Назад к %{question}"
+      show:
+        back: "Назад к %{question}"
+        delete: "Удалить ответ"
+
+    badges:
+      badge:
+        edit: "Изменить"
+        delete: "Удалить"
+        sure?: "Вы уверены?"
+      edit:
+        back: "Назад"
+      index:
+        badges: "Бейджи"
+        title: "Название"
+        actions: "Действия"
+        no_badges: "Бейджей нет"
+      new:
+        back: "Назад"
+
+    questions:
+      edit:
+        edit: "Изменить вопрос теста %{title} "
+      new:
+        new: "Создать вопрос теста %{title} "
+      question:
+        show: "Показать"
+        edit: "Изменить"
+        delete: "Удалить"
+        sure?: "Вы уверены?"
+      edit:
+        back: "Назад к %{test}"
+      new:
+        back: "Назад к %{test}"
+      show:
+        back: "Назад к %{test}"
+        delete: "Удалить"
+        sure?: "Вы уверены?"
+        answers: "Ответы"
+        new_answer: "Новый ответ"
+
+
+    gists:
+      index:
+        no_gists: "Гистов нет"
+        gists: "Гисты"
+        delete_all: "Удалить все"
+        question: "Вопрос"
+        user_name: "Имя пользователя"
+        URL: "URL"
+
+    nav:
+      gists: "Гисты"
+      badges: "Буйджи"
+      hello: "Привет"
+      logout: "Выход"
 
   tests_mailer:
     completed_tests:

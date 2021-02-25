@@ -1,6 +1,6 @@
-<h1>Tests</h1>
+<h1><%= t('.tests') %></h1>
 <p>
-  <%= link_to 'New test', new_admin_test_path %>
+  <%= link_to t('.new_test'), new_admin_test_path %>
 </p>
 
 <%= render 'shared/errors', resource: @test %>
@@ -8,13 +8,13 @@
 <table class="table">
   <tr>
     <th class="sort-by-title pointer">
-      Title
+      <%= t('.title') %>
       <%= octicon 'arrow-up', class: 'text-success hide' %>
       <%= octicon 'arrow-down', class: 'text-success hide' %>
     </th>
-    <th>Level</th>
-    <th>Questions</th>
-    <th colspan="4">Actions</th>
+    <th><%= t('.level') %></th>
+    <th><%= t('.questions') %></th>
+    <th colspan="4"><%= t('.actions') %></th>
   </tr>
 
   <%= render @tests %>

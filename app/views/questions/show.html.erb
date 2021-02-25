@@ -9,4 +9,4 @@
   <%= render @question.answers %>
 </ol>
 
-<%= link_to "<< Back to #{ @question.test.title }", test_path(id: @question.test_id) %>
+<%= link_to t('.back', test: @question.test.title), test_path(id: @question.test_id) %>

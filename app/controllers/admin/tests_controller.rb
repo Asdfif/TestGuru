@@ -65,7 +65,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def rescue_with_test_not_found
-    render plain: "Test was not found"
+    render plain: t('.not_found')
   end
 
 end

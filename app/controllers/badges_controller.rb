@@ -4,14 +4,7 @@ class BadgesController < ApplicationController
 
   def index
     @badges = Badge.all
-  end
-
-  def guru_badges  
-    if current_user.id == params[:guru_id].to_i
-      @user = User.find(params[:guru_id])
-    else     
-      redirect_to badges_path
-    end
+    @user = User.find(current_user.id)
   end
 
 end
