@@ -28,7 +28,12 @@ unless Test.exists? #&& Category.exists? && User.exists?  && Question.exists? &&
     { title: "Test3", level: 5, category: categories[0], author: users[1] }
   ])
 # end
-
+  
+  badges = Badge.create!([
+    { title: 'b1', rule_type: "finish_tests_by_category", img_url: "https://yt3.ggpht.com/a/AATXAJwK41QftpSncqY9v5fXpg18cVMH3h_-IbHVeELG=s900-c-k-c0xffffffff-no-rj-mo" },
+    { title: 'b2', rule_type: "finish_tests_by_level", rule_value: 0, img_url: "https://yt3.ggpht.com/a/AATXAJwK41QftpSncqY9v5fXpg18cVMH3h_-IbHVeELG=s900-c-k-c0xffffffff-no-rj-mo"},
+    { title: 'b3', rule_type: "finish_test_first_time", rule_value: 1, img_url: "https://yt3.ggpht.com/a/AATXAJwK41QftpSncqY9v5fXpg18cVMH3h_-IbHVeELG=s900-c-k-c0xffffffff-no-rj-mo"}
+  ])
 # unless Question.exists?
 
   for i in (1..22)
@@ -43,7 +48,7 @@ unless Test.exists? #&& Category.exists? && User.exists?  && Question.exists? &&
 
 
 # unless Answer.exists?
-questions = Question.all
+  questions = Question.all
   for j in (1..22)
     for i in (1..2)
       Answer.create!(

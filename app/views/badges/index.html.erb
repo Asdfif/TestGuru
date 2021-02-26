@@ -1,0 +1,28 @@
+<% if @user.present? %>
+<h1><%="#{@user.first_name} #{@user.last_name} #{t('.badges')}"%></h1>
+
+<table class="table">
+  <tr>
+    <th><%= t('.title') %></th>
+    <th><%= t('.image') %></th>
+
+  </tr>
+
+  <%= render @user.badges %>
+
+</table>
+
+<% end %>
+
+<h1><%= t('.all_badges') %></h1>
+
+<table class="table">
+  <tr>
+    <th><%= t('.title') %></th>
+    <th><%= t('.image') %></th>
+
+  </tr>
+
+  <%= render @badges %>
+
+</table>

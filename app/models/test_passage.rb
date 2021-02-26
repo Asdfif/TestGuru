@@ -4,8 +4,10 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, optional: true , class_name: "Question"
 
   before_validation :before_validation_set_first_question, on: :create
-  before_update :before_update_next_question
-  
+  before_update :before_update_next_question, unless: -> { completed? }
+
+  scope :successful_tests, -> (user) { where(user: user, success: true) }
+
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
       self.correct_questions += 1
@@ -27,6 +29,10 @@ class TestPassage < ApplicationRecord
 
   def questions_passed(current_question)
     test.questions.index(current_question) + 1
+  end
+
+  def set_result
+    self.update(success: true) if completed? && success?
   end
 
   private

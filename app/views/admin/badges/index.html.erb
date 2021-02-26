@@ -1,0 +1,14 @@
+<% if @badges.blank? %>
+  <h1><%= t('.no_badges')%></h1>
+<% else%>
+  <h1><%= t('.badges') %></h1>
+    <table>
+      <tr>
+        <th><%= t('.title') %></th>
+        <th colspan="2"><%= t('.actions') %></th>
+      </tr>
+
+      <%= render @badges %>
+
+  </table>
+<% end %>

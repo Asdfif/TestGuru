@@ -41,18 +41,172 @@ en:
   tests:
     index:
       header: "Tricky Tests"
+      tests: "Tests"
+      new_test: "New test"
+      title: "Title"
+      level: "Level"
+      questions: "Questions"
+      actions: "Actions"
+    rescue_with_test_not_found:
+        not_found: "Test was not found"
+    test:
+      show: "Show"
+      start: "Start"
+    show:
+      title: "Title"
+      level: "Level"
+      questions: "Questions"
+      actions: "Actions"
+      back: "Back"
 
   test_passages:
     result:
       header: "the %{title} Test was completed!"
+      complete: "The %{title} was completed!"
+      success: "Test passing success"
+      successfully: "%{title} passed successfully!"
+      failed: "%{title} failed!"
+      back: "Back to tests"
+    gist:
+      success: "Gist created!"
+      failure: "Error occures while gist saving"
+    show:
+      passing: "Pass the %{test} Test"
+      gist: "Gist question"
+      next: "Next"
+
   gists:
     create:
       success: <a href="%{url}" target="_blank" rel="nofollow">Gist %{question_title} was successfully created!</a>
       failure: "An error occured while saving gist"
+  
+  questions:
+    rescue_with_question_not_found:
+      not_found: "Question was not found"
+    question:
+      show: "Show"
+    show:
+      back: "Back to %{test}"
 
+  
+  sessions:
+    create:
+      hello: "Hello %{first_name} %{last_name}!"
+
+  answers:
+    answer:
+        show: "Show"
+    show:
+        back: "Back to %{question}"
+
+  badges:
+    index:
+      badges: "Badges"
+      title: "Title"
+      image: "Image"
+      rule_type: "Rule type"
+      rule_value: "Rule value"
+      all_badges: "All badges"
+     
   admin:
     tests:
       create:
         success: "Test was succeGuru test!"
       form_inline:
         submit: "OK"
+      index:
+        not_authorized!: 'You are not authorized to view this page.'
+        tests: "Tests"
+        new_test: "New test"
+        title: "Title"
+        level: "Level"
+        questions: "Questions"
+        actions: "Actions"
+      new:
+        back: "Back"
+      show:
+        title: "Title:"
+        level: "Level:"
+        questions: "Questions:"
+        actions: "Actions"
+        new_question: "Create new question"
+        edit: "Edit"
+        back: "Back"
+      rescue_with_test_not_found:
+        not_found: "Test was not found"
+      test:
+        easy: "easy"
+        medium: "medium"
+        hard: "hard"
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+        sure?: "Are you sure?"
+      edit:
+        back: "Back"
+
+    answers:
+      answer:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+        sure?: "Are you sure?"
+      edit:
+        back: "Back to %{question}"
+      new:
+        back: "Back to %{question}"
+      show:
+        back: "Back to %{question}"
+        delete: "Delete"
+        sure?: "Are you sure?"
+
+    badges:
+      badge:
+        edit: "Edit"
+        delete: "Delete"
+        sure?: "Are you sure?"
+      edit:
+        back: "Back"
+      index:
+        badges: "Badges"
+        title: "Title"
+        actions: "Actions"
+        no_badges: "No Badges"
+      new:
+        back: "Back"
+
+    questions:
+      edit:
+        edit: "Edit %{title} Question"
+      new:
+        new: "Create %{title} Question"
+      question:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+        sure?: "Are you sure?"
+      edit:
+        back: "Back to %{test}"
+      new:
+        back: "Back to %{test}"
+      show:
+        answers: "Answers"
+        new_answer: "New answer"
+        back: "Back to %{test}"
+        delete: "Delete"
+        sure?: "Are you sure?"
+
+    gists:
+      index:
+        no_gists: "No Gists"
+        gists: "Gists"
+        delete_all: "Delete all gists"
+        question: "Question"
+        user_name: "User name"
+        URL: "URL"
+
+    nav:
+      gists: "Gists"
+      badges: "Badges"
+      hello: "Welcome"
+      logout: "Logout"

@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :test_passages, dependent: :destroy
   has_many :tests, through: :test_passages
   has_many :own_tests, class_name: "Test", foreign_key: "author_id"
+  has_many :badge_assignings, dependent: :destroy
+  has_many :badges, through: :badge_assignings
 
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, 
