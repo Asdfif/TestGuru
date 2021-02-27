@@ -14,6 +14,10 @@ class Test < ApplicationRecord
     less_than_or_equal_to: 10,
     only_integer: true
   }
+  validates_numericality_of :timer, {
+    greater_than_or_equal_to: 0,
+    only_integer: true
+  }
 
   scope :by_level, -> (level) { where(level: level) }
   scope :easy, -> { where(level: (0..1)) }
