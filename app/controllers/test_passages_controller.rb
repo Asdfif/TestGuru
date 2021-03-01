@@ -3,7 +3,12 @@ class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[gist show update result]
 
-  def show; end
+  def show
+    if @test_passage.time_is_over?
+      @test_passage.update(success: false)
+      redirect_to result_test_passage_path(@test_passage)
+    end
+  end
 
   def result; end
 
@@ -15,7 +20,7 @@ class TestPassagesController < ApplicationController
       BadgeDepartamentService.new(@test_passage).call
       redirect_to result_test_passage_path(@test_passage)
     else
-      render :show
+      redirect_to @test_passage
     end
   end
 

@@ -1,5 +1,9 @@
 <h1><%= t('.passing', test: @test_passage.test.title) %></h1>
-
+<% if @test_passage.test.timer > 0 %>
+<p class="timer", data-start-time="<%= @test_passage.created_at.to_f * 1000 %>", data-test-timer="<%= @test_passage.test.timer * 60 %>", data-time-now="<%= Time.now %>">
+  <span id="count"></span> <%= t('.seconds_left') %>
+</p>
+<% end %>
 <p>  
   <b>
     <% current_question = @test_passage.current_question%>

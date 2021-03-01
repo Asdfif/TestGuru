@@ -35,6 +35,10 @@ class TestPassage < ApplicationRecord
     self.update(success: true) if completed? && success?
   end
 
+  def time_is_over?
+    ((Time.now - created_at).to_f / 60) >= test.timer if test.timer.positive?
+  end
+
   private
 
   def before_validation_set_first_question

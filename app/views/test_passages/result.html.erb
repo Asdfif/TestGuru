@@ -14,4 +14,16 @@
   <% end %>
 </h2>
 
+<p class="passed_time", data-start-time="<%= @test_passage.created_at.to_f * 1000 %>", data-test-timer="<%= @test_passage.test.timer * 60 %>">
+  <%= t('.seconds_spent') %> <span id="time"></span>
+</p>
+
+
+<h3>
+  <% if time_left.positive? %>
+    <span id="time_left"></span> <%= t('.seconds_left') %>  
+  <% else %>
+    <%= t('.timeout') %>
+  <% end %>
+</h3>
 <%= link_to t('.back'), tests_path %>

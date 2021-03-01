@@ -67,6 +67,9 @@ en:
       successfully: "%{title} passed successfully!"
       failed: "%{title} failed!"
       back: "Back to tests"
+      timeout: "TIMEOUT"
+      seconds_left: " seconds left"
+      seconds_spent: "seconds spent "
     gist:
       success: "Gist created!"
       failure: "Error occures while gist saving"
@@ -74,6 +77,8 @@ en:
       passing: "Pass the %{test} Test"
       gist: "Gist question"
       next: "Next"
+      seconds_left: " seconds left"
+
 
   gists:
     create:
